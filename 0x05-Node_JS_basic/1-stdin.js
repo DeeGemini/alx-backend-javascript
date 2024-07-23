@@ -8,8 +8,8 @@ process.stdin.setEncoding('utf8');
 
 // Read the user input from stdin
 process.stdin.on('data', (input) => {
-    const name = input.trim(); // Remove any trailing new lines
-    console.log('Your name is: ${name}');
-    console.log('This important software is now closing');
-    process.exit(); // Exit the process after displaying the messages	
+  const name = input.trim(); // Remove any trailing newlines
+  console.log(`Your name is: ${name}`); // Use backticks for template literals
+  console.log('This important software is now closing');
+  process.exit(); // Exit the process after displaying the messages
 });
