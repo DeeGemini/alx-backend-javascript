@@ -1,7 +1,9 @@
 // 1-stdin.js
 
 // Display the welcome message
-console.log('Welcome to Holberton School, what is your name?');
+if (process.stdin.isTTY) {
+	console.log('Welcome to Holberton School, what is your name?');
+}
 
 // Setup stdin to read from the user
 process.stdin.setEncoding('utf8');
