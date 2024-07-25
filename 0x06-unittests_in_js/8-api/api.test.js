@@ -46,3 +46,40 @@ describe('Cart page', function() {
     });
   });
 });
+
+describe('Available payments page', function() {
+  const url = 'http://localhost:7865/available_payments';
+
+  it('should return status code 200 and correct object', function(done) {
+    request(url, function(error, response, body) {
+      expect(response.statusCode).to.equal(200);
+      expect(JSON.parse(body)).to.deep.equal({
+        payment_methods: {
+          credit_cards: true,
+          paypal: false
+        }
+      });
+      done();
+    });
+  });
+});
+
+describe('Login page', function() {
+  const url = 'http://localhost:7865/login';
+  const options = {
+    method: 'POST',
+    url: url,
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ userName: 'Betty' })
+  };
+
+  it('should return status code 200 and correct message', function(done) {
+    request(options, function(error, response, body) {
+      expect(response.statusCode).to.equal(200);
+      expect(body).to.equal('Welcome Betty');
+      done();
+    });
+  });
+});
